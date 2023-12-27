@@ -32,6 +32,22 @@ class HomePage extends StatelessWidget {
             width: 20,
           ),
         ),
+        actions: [
+          Container(
+            margin: const EdgeInsets.all(10),
+            alignment: Alignment.center,
+            width: 37,
+            decoration: BoxDecoration(
+              color: const Color(0xFFF7F8F8),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: SvgPicture.asset(
+              'dots.svg',
+              height: 5,
+              width: 5,
+            ),
+          ),
+        ],
       ),
     );
   }
