@@ -8,6 +8,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(),
+      backgroundColor: Colors.white,
       body: Column(
         children: [
           Container(
@@ -26,25 +27,33 @@ class HomePage extends StatelessWidget {
                 filled: true,
                 fillColor: Colors.white,
                 contentPadding: const EdgeInsets.all(15),
+                hintText: 'Search Pancake',
+                hintStyle: const TextStyle(
+                  color: Color(0xFFDDDADA),
+                  fontSize: 14,
+                ),
                 prefixIcon: Padding(
                   padding: const EdgeInsets.all(12),
                   child: SvgPicture.asset('search.svg')
                 ),
-                suffixIcon: IntrinsicHeight(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      const VerticalDivider(
-                        color: Colors.black,
-                        thickness: 0.1,
-                        indent: 10,
-                        endIndent: 10,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: SvgPicture.asset('filter.svg')
-                      ),
-                    ],
+                suffixIcon: Container(
+                  width: 100,
+                  child: IntrinsicHeight(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        const VerticalDivider(
+                          color: Colors.black,
+                          thickness: 0.1,
+                          indent: 10,
+                          endIndent: 10,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: SvgPicture.asset('filter.svg')
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 border: OutlineInputBorder(
