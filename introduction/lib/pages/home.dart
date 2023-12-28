@@ -11,60 +11,68 @@ class HomePage extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          Container(
-            margin: const EdgeInsets.only(top: 40, left: 20, right: 20),
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: const Color(0xFF1D1617).withOpacity(0.11),
-                  blurRadius: 40,
-                  spreadRadius: 0.0,
-                )
-              ]
-            ),
-            child: TextField(
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.white,
-                contentPadding: const EdgeInsets.all(15),
-                hintText: 'Search Pancake',
-                hintStyle: const TextStyle(
-                  color: Color(0xFFDDDADA),
-                  fontSize: 14,
-                ),
-                prefixIcon: Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: SvgPicture.asset('search.svg')
-                ),
-                suffixIcon: SizedBox(
-                  width: 100,
-                  child: IntrinsicHeight(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        const VerticalDivider(
-                          color: Colors.black,
-                          thickness: 0.1,
-                          indent: 10,
-                          endIndent: 10,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: SvgPicture.asset('filter.svg')
-                        ),
-                      ],
-                    ),
+          searchField(),
+        ],
+      ),
+    );
+  }
+
+  Column searchField() {
+    return Column(
+      children: [
+        Container(
+          margin: const EdgeInsets.only(top: 40, left: 20, right: 20),
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: const Color(0xFF1D1617).withOpacity(0.11),
+                blurRadius: 40,
+                spreadRadius: 0.0,
+              )
+            ]
+          ),
+          child: TextField(
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: Colors.white,
+              contentPadding: const EdgeInsets.all(15),
+              hintText: 'Search Pancake',
+              hintStyle: const TextStyle(
+                color: Color(0xFFDDDADA),
+                fontSize: 14,
+              ),
+              prefixIcon: Padding(
+                padding: const EdgeInsets.all(12),
+                child: SvgPicture.asset('search.svg')
+              ),
+              suffixIcon: SizedBox(
+                width: 100,
+                child: IntrinsicHeight(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      const VerticalDivider(
+                        color: Colors.black,
+                        thickness: 0.1,
+                        indent: 10,
+                        endIndent: 10,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: SvgPicture.asset('filter.svg')
+                      ),
+                    ],
                   ),
                 ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  borderSide: BorderSide.none,
-                )
               ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15),
+                borderSide: BorderSide.none,
+              )
             ),
-          )
-        ]
-      ),
+          ),
+        )
+      ]
     );
   }
 
