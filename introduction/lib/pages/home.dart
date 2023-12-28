@@ -25,6 +25,28 @@ class HomePage extends StatelessWidget {
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.white,
+                contentPadding: const EdgeInsets.all(15),
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: SvgPicture.asset('search.svg')
+                ),
+                suffixIcon: IntrinsicHeight(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      const VerticalDivider(
+                        color: Colors.black,
+                        thickness: 0.1,
+                        indent: 10,
+                        endIndent: 10,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: SvgPicture.asset('filter.svg')
+                      ),
+                    ],
+                  ),
+                ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15),
                   borderSide: BorderSide.none,
