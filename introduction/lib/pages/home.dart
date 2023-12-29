@@ -75,6 +75,29 @@ class HomePage extends StatelessWidget {
                               ),
                             ],
                           ),
+                          Container(
+                            height: 45,
+                            width: 130,
+                            decoration: BoxDecoration(
+                              gradient: const LinearGradient(
+                                colors: [
+                                  Color(0xFF9DCEFF),
+                                  Color(0xFF92A3FD),
+                                ]
+                              ),
+                              borderRadius: BorderRadius.circular(50)
+                            ),
+                            child: const Center(
+                              child: Text(
+                                'View',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14
+                                )
+                              )
+                            )
+                          )
                         ],
                       )
                     );
