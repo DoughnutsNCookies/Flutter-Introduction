@@ -99,6 +99,14 @@ class HomePage extends StatelessWidget {
                             )
                           ],
                         ),
+                        GestureDetector(
+                          onTap: () {},
+                          child: SvgPicture.asset(
+                            'button.svg',
+                            width: 30,
+                            height: 30,
+                          ),
+                        )
                       ],
                     )
                   );
