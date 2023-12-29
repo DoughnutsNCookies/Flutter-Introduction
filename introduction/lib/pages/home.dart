@@ -2,16 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:introduction/models/category_model.dart';
 import 'package:introduction/models/diet_model.dart';
+import 'package:introduction/models/popular_model.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
   List<CategoryModel> categories = [];
   List<DietModel> diets = [];
+  List<PopularDietsModel> popularDiets = [];
 
   void getInitialInfo() {
     categories = CategoryModel.getCategories();
     diets = DietModel.getDiets();
+    popularDiets = PopularDietsModel.getPopularDiets();
   }
 
   @override
@@ -26,7 +29,7 @@ class HomePage extends StatelessWidget {
           const SizedBox(height: 40),
           categoriesSection(),
           const SizedBox(height: 40),
-          recommendationSection(),
+          recommendationSection()
         ],
       ),
     );
@@ -204,7 +207,7 @@ class HomePage extends StatelessWidget {
         const Padding(
           padding: EdgeInsets.only(left: 20),
           child: Text(
-            'Recommendation\nfor Diet',
+            'Recommendation for Diet',
             style: TextStyle(
               color: Colors.black,
               fontSize: 18,
