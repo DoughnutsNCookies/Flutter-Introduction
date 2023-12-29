@@ -32,69 +32,43 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Column categoriesSection() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Padding(
-          padding: EdgeInsets.only(left: 20),
-          child: Text(
-            'Category',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          )
+  AppBar appBar() {
+    return AppBar(
+      title: const Text(
+        'Breakfast',
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
         ),
-        const SizedBox(height: 15),
-        SizedBox(
-          height: 120,
-          child: ListView.separated(
-            itemCount: categories.length,
-            scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.only(
-              left: 20,
-              right: 20,
-            ),
-            separatorBuilder: (context, index) => const SizedBox(width: 25),
-            itemBuilder: (context, index) {
-              return Container(
-                width: 100,
-                decoration: BoxDecoration(
-                  color: categories[index].boxColor.withOpacity(0.3),
-                  borderRadius: BorderRadius.circular(16)
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                      width: 50,
-                      height: 50,
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: SvgPicture.asset(categories[index].icon),
-                      ),
-                    ),
-                    Text(
-                      categories[index].name,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w400,
-                        color: Colors.black,
-                        fontSize: 14,
-                      ),
-                    )
-                  ],
-                ),
-              );
-            },
-          )
-        )
+      ),
+      backgroundColor: Colors.white,
+      elevation: 0,
+      centerTitle: true,
+      leading: button('arrow.svg', 20, 20),
+      actions: [
+        button('dots.svg', 5, 5),
       ],
+    );
+  }
+
+  GestureDetector button(file, height, width) {
+    return GestureDetector(
+      onTap: () {},
+      child: Container(
+        margin: const EdgeInsets.all(10),
+        alignment: Alignment.center,
+        width: 37,
+        decoration: BoxDecoration(
+          color: const Color(0xFFF7F8F8),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: SvgPicture.asset(
+          file,
+          height: height,
+          width: width,
+        ),
+      ),
     );
   }
 
@@ -157,22 +131,68 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  AppBar appBar() {
-    return AppBar(
-      title: const Text(
-        'Breakfast',
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
+  Column categoriesSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Padding(
+          padding: EdgeInsets.only(left: 20),
+          child: Text(
+            'Category',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          )
         ),
-      ),
-      backgroundColor: Colors.white,
-      elevation: 0,
-      centerTitle: true,
-      leading: button('arrow.svg', 20, 20),
-      actions: [
-        button('dots.svg', 5, 5),
+        const SizedBox(height: 15),
+        SizedBox(
+          height: 120,
+          child: ListView.separated(
+            itemCount: categories.length,
+            scrollDirection: Axis.horizontal,
+            padding: const EdgeInsets.only(
+              left: 20,
+              right: 20,
+            ),
+            separatorBuilder: (context, index) => const SizedBox(width: 25),
+            itemBuilder: (context, index) {
+              return Container(
+                width: 100,
+                decoration: BoxDecoration(
+                  color: categories[index].boxColor.withOpacity(0.3),
+                  borderRadius: BorderRadius.circular(16)
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      width: 50,
+                      height: 50,
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: SvgPicture.asset(categories[index].icon),
+                      ),
+                    ),
+                    Text(
+                      categories[index].name,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black,
+                        fontSize: 14,
+                      ),
+                    )
+                  ],
+                ),
+              );
+            },
+          )
+        )
       ],
     );
   }
@@ -264,26 +284,6 @@ class HomePage extends StatelessWidget {
           )
         )
       ]
-    );
-  }
-
-  GestureDetector button(file, height, width) {
-    return GestureDetector(
-      onTap: () {},
-      child: Container(
-        margin: const EdgeInsets.all(10),
-        alignment: Alignment.center,
-        width: 37,
-        decoration: BoxDecoration(
-          color: const Color(0xFFF7F8F8),
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: SvgPicture.asset(
-          file,
-          height: height,
-          width: width,
-        ),
-      ),
     );
   }
 }
