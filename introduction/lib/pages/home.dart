@@ -26,93 +26,7 @@ class HomePage extends StatelessWidget {
           const SizedBox(height: 40),
           categoriesSection(),
           const SizedBox(height: 40),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Padding(
-                padding: EdgeInsets.only(left: 20),
-                child: Text(
-                  'Recommendation\nfor Diet',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  )
-                ),
-              ),
-              const SizedBox(height: 25),
-              SizedBox(
-                height: 240,
-                child: ListView.separated(
-                  itemBuilder: (context, index) {
-                    return Container(
-                      width: 210,
-                      decoration: BoxDecoration(
-                        color: diets[index].boxColor.withOpacity(0.3),
-                        borderRadius: BorderRadius.circular(20)
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          SvgPicture.asset(diets[index].icon),
-                          Column(
-                            children: [
-                              Text(
-                                diets[index].name,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.black,
-                                  fontSize: 16
-                                ),
-                              ),
-                              Text(
-                                '${diets[index].level} |  ${diets[index].duration} | ${diets[index].calorie}',
-                                style: const TextStyle(
-                                  color: Color(0xFF7B6F72),
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w400
-                                )
-                              ),
-                            ],
-                          ),
-                          Container(
-                            height: 45,
-                            width: 130,
-                            decoration: BoxDecoration(
-                              gradient: const LinearGradient(
-                                colors: [
-                                  Color(0xFF9DCEFF),
-                                  Color(0xFF92A3FD),
-                                ]
-                              ),
-                              borderRadius: BorderRadius.circular(50)
-                            ),
-                            child: const Center(
-                              child: Text(
-                                'View',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 14
-                                )
-                              )
-                            )
-                          )
-                        ],
-                      )
-                    );
-                  },
-                  separatorBuilder: (context, index) => const SizedBox(width: 25),
-                  itemCount: diets.length,
-                  scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.only(
-                    left: 20,
-                    right: 20
-                  )
-                )
-              )
-            ]
-          )
+          recommendationSection(),
         ],
       ),
     );
@@ -260,6 +174,96 @@ class HomePage extends StatelessWidget {
       actions: [
         button('dots.svg', 5, 5),
       ],
+    );
+  }
+
+  Column recommendationSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Padding(
+          padding: EdgeInsets.only(left: 20),
+          child: Text(
+            'Recommendation\nfor Diet',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            )
+          ),
+        ),
+        const SizedBox(height: 25),
+        SizedBox(
+          height: 240,
+          child: ListView.separated(
+            itemBuilder: (context, index) {
+              return Container(
+                width: 210,
+                decoration: BoxDecoration(
+                  color: diets[index].boxColor.withOpacity(0.3),
+                  borderRadius: BorderRadius.circular(20)
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    SvgPicture.asset(diets[index].icon),
+                    Column(
+                      children: [
+                        Text(
+                          diets[index].name,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black,
+                            fontSize: 16
+                          ),
+                        ),
+                        Text(
+                          '${diets[index].level} |  ${diets[index].duration} | ${diets[index].calorie}',
+                          style: const TextStyle(
+                            color: Color(0xFF7B6F72),
+                            fontSize: 13,
+                            fontWeight: FontWeight.w400
+                          )
+                        ),
+                      ],
+                    ),
+                    Container(
+                      height: 45,
+                      width: 130,
+                      decoration: BoxDecoration(
+                        gradient: const LinearGradient(
+                          colors: [
+                            Color(0xFF9DCEFF),
+                            Color(0xFF92A3FD),
+                          ]
+                        ),
+                        borderRadius: BorderRadius.circular(50)
+                      ),
+                      child: const Center(
+                        child: Text(
+                          'View',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14
+                          )
+                        )
+                      )
+                    )
+                  ],
+                )
+              );
+            },
+            separatorBuilder: (context, index) => const SizedBox(width: 25),
+            itemCount: diets.length,
+            scrollDirection: Axis.horizontal,
+            padding: const EdgeInsets.only(
+              left: 20,
+              right: 20
+            )
+          )
+        )
+      ]
     );
   }
 
