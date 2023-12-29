@@ -69,6 +69,38 @@ class HomePage extends StatelessWidget {
                         )
                       ]
                     ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        SvgPicture.asset(
+                          popularDiets[index].icon,
+                          width: 65,
+                          height: 65,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              popularDiets[index].name,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black,
+                                fontSize: 16
+                              )
+                            ),
+                            Text(
+                              '${popularDiets[index].level} | ${popularDiets[index].duration} | ${popularDiets[index].calorie}',
+                              style: const TextStyle(
+                                color: Color(0xFF7B6F72),
+                                fontSize: 13,
+                                fontWeight: FontWeight.w400
+                              )
+                            )
+                          ],
+                        ),
+                      ],
+                    )
                   );
                 }
               )
