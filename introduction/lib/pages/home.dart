@@ -23,13 +23,59 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: appBar(),
       backgroundColor: Colors.white,
-      body: Column(
+      body: ListView(
         children: [
           searchField(),
           const SizedBox(height: 40),
           categoriesSection(),
           const SizedBox(height: 40),
-          recommendationSection()
+          recommendationSection(),
+          const SizedBox(height: 40),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Padding(
+                padding: EdgeInsets.only(left: 20),
+                child: Text(
+                  'Popular',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold
+                  )
+                )
+              ),
+              const SizedBox(height: 15),
+              ListView.separated(
+                itemCount: popularDiets.length,
+                shrinkWrap: true,
+                padding: const EdgeInsets.only(
+                  left: 20,
+                  right: 20
+                ),
+                separatorBuilder: (context, index) => const SizedBox(height: 25),
+                itemBuilder: (context, index) {
+                  return Container(
+                    height: 100,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(16),
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color(0xFF1D1617).withOpacity(0.07),
+                          offset: const Offset(0, 10),
+                          blurRadius: 40,
+                          spreadRadius: 0
+                        )
+                      ]
+                    ),
+                  );
+                }
+              )
+            ]
+
+          ),
+          const SizedBox(height: 40)
         ],
       ),
     );
