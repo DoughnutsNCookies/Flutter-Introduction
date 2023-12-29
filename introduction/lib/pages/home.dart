@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:introduction/models/category_model.dart';
+import 'package:introduction/models/diet_model.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
   List<CategoryModel> categories = [];
+  List<DietModel> diets = [];
 
-  void  getCategories() {
+  void getInitialInfo() {
     categories = CategoryModel.getCategories();
+    diets = DietModel.getDiets();
   }
 
   @override
   Widget build(BuildContext context) {
-    getCategories();
+    getInitialInfo();
     return Scaffold(
       appBar: appBar(),
       backgroundColor: Colors.white,
@@ -21,7 +24,72 @@ class HomePage extends StatelessWidget {
         children: [
           searchField(),
           const SizedBox(height: 40),
-          categoriesSection()
+          categoriesSection(),
+          const SizedBox(height: 40),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Padding(
+                padding: EdgeInsets.only(left: 20),
+                child: Text(
+                  'Recommendation\nfor Diet',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  )
+                ),
+              ),
+              const SizedBox(height: 25),
+              SizedBox(
+                height: 240,
+                child: ListView.separated(
+                  itemBuilder: (context, index) {
+                    return Container(
+                      width: 210,
+                      decoration: BoxDecoration(
+                        color: diets[index].boxColor.withOpacity(0.3),
+                        borderRadius: BorderRadius.circular(20)
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          SvgPicture.asset(diets[index].icon),
+                          Column(
+                            children: [
+                              Text(
+                                diets[index].name,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.black,
+                                  fontSize: 16
+                                ),
+                              ),
+                              Text(
+                                '${diets[index].level} |  ${diets[index].duration} | ${diets[index].calorie}',
+                                style: const TextStyle(
+                                  color: Color(0xFF7B6F72),
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w400
+                                )
+                              ),
+                            ],
+                          ),
+                        ],
+                      )
+                    );
+                  },
+                  separatorBuilder: (context, index) => const SizedBox(width: 25),
+                  itemCount: diets.length,
+                  scrollDirection: Axis.horizontal,
+                  padding: const EdgeInsets.only(
+                    left: 20,
+                    right: 20
+                  )
+                )
+              )
+            ]
+          )
         ],
       ),
     );
@@ -40,7 +108,7 @@ class HomePage extends StatelessWidget {
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
-          ),
+          )
         ),
         const SizedBox(height: 15),
         SizedBox(
